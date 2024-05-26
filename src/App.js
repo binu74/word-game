@@ -30,59 +30,94 @@ const targetPositions = [
   { row: 4, col: 5 }  // U
 ];
 
+const targetWord2 = 'OKAYYY';
+const targetPositions2 = [
+  { row: 0, col: 1 }, // O
+  { row: 1, col: 1 }, // K
+  { row: 2, col: 1 }, // A
+  { row: 3, col: 1 }, // Y
+  { row: 4, col: 1 }, // Y
+  { row: 5, col: 1 }, // Y
+];
+
+// Define specific colors for specific positions
+const specialColors = {
+  '0-0': 'yellow', '3-0':'red', '0-4':'yellow',
+  '1-0': 'yellow', '2-1':'red', '3-4':'yellow',
+  '0-1': 'yellow', '3-1':'red', '4-4':'yellow',
+  '2-0': 'yellow', '4-1':'red', '5-4':'yellow',
+  '6-0': 'yellow', '5-1':'red', '6-4':'yellow',
+  '7-0': 'yellow', '1-2':'red', '7-4':'yellow',
+  '1-1': 'yellow', '0-3':'red', '0-5':'yellow',
+  '7-1': 'yellow', '2-3':'red', '1-5':'yellow',
+  '0-2': 'yellow', '2-5':'yellow',
+  '6-2': 'yellow', '5-5':'yellow',
+  '7-2': 'yellow', '6-5':'yellow',
+  '3-3': 'yellow', '7-5':'yellow',
+  '4-3': 'yellow',
+  '5-3': 'yellow',
+  '6-3': 'yellow',
+  '7-3': 'yellow', 
+};
+
 const App = () => {
   const [clickedLetters, setClickedLetters] = useState([]);
   const [gridColors, setGridColors] = useState(Array(8).fill(null).map(() => Array(6).fill('')));
+  const [message, setMessage] = useState('');
+  const [lines, setLines] = useState([]);
 
   const handleClick = (row, col, letter) => {
     const newClickedLetters = [...clickedLetters, { row, col, letter }];
     setClickedLetters(newClickedLetters);
+    
 
-    const isPartOfTargetWord = targetPositions.some((pos, index) => {
-      return (
-        pos.row === row &&
-        pos.col === col &&
-        letter.toUpperCase() === targetWord[index]
-      );
-    });
-
-    const newGridColors = gridColors.map((rowColors, rIdx) => 
-      rowColors.map((color, cIdx) => 
-        (rIdx === row && cIdx === col) 
-          ? isPartOfTargetWord 
-            ? 'correct' 
-            : 'incorrect' 
-          : color
-      )
+    const newGridColors = gridColors.map((rowColors, rIdx) =>
+      rowColors.map((color, cIdx) => {
+        if (rIdx === row && cIdx === col) {
+          const positionKey = `${rIdx}-${cIdx}`;
+          return specialColors[positionKey] || 'correct'; // Use special color if defined, otherwise 'correct'
+        }
+        return color;
+      })
     );
     setGridColors(newGridColors);
 
-    if (newClickedLetters.length === targetWord.length) {
-      console.log('Clicked:', newClickedLetters);
+    // Check if the clicked sequence matches the target word
+    const targetSequence = newClickedLetters.map(({ row, col }) => `${row}-${col}`);
+    const isTargetWordCorrect = targetPositions.every(({ row, col }, index) => 
+      `${row}-${col}` === targetSequence[index] && 
+      newClickedLetters[index].letter.toUpperCase() === targetWord[index]
+    );
 
-      const isCorrect = newClickedLetters.every((pos, index) => {
-        console.log(
-          `Comparing clicked (${pos.row},${pos.col}): ${pos.letter.toUpperCase()}`
-          + ` with target (${targetPositions[index].row},${targetPositions[index].col}): `
-          + `${targetWord[index]}`
-        );
-        return (
-          pos.row === targetPositions[index].row &&
-          pos.col === targetPositions[index].col &&
-          pos.letter.toUpperCase() === targetWord[index]
-        );
-      });
-
-      console.log('Is Correct:', isCorrect);
-
-      if (isCorrect) {
-        alert('Correct! You found the word "CUTERWITHYOU"!');
-      } else {
-        alert('Incorrect sequence. Try again!');
-      }
-      setClickedLetters([]); // Reset for the next attempt
-      setGridColors(Array(8).fill(null).map(() => Array(6).fill(''))); // Reset colors for the next attempt
+    if (isTargetWordCorrect) {
+      setMessage('You won!');
     }
+
+    // Check if the clicked sequence matches the second target word
+    const isSecondWordFound = targetPositions2.every(({ row, col }, index) =>
+      `${row}-${col}` === targetSequence[index] && 
+      newClickedLetters[index].letter.toUpperCase() === targetWord2[index]
+    );
+
+    if (isSecondWordFound) {
+      setMessage('REMEMBER ME');
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+  };
+
+  const handleSubmit = () => {
+    const selectedWord = clickedLetters.map(({ letter }) => letter.toUpperCase()).join('');
+    if (selectedWord === targetWord) {
+      setMessage('You won!');
+    } else {
+      setMessage('Try again!');
+    }
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000); // Delay to show the message before refreshing
   };
 
   return (
@@ -96,7 +131,8 @@ const App = () => {
           onClick={handleClick} 
           gridColors={gridColors}
         />
-        <button className="submit-button">Submit</button>
+        <div className="message">{message}</div>
+        <button className="submit-button" onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );
