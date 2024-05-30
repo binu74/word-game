@@ -21,4 +21,6 @@ const Grid = ({ letters, onClick, gridColors }) => {
   );
 };
 
+
+
 export default Grid;
