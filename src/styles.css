@@ -73,20 +73,20 @@
 }
 
 .cell.selected {
-  background-color: lightblue;
-  border-color: lightblue;
+  background-color: rgb(138, 142, 143);
+  border-color: rgb(138, 142, 143);
 }
 
 .cell.found {
-  background-color: lightgreen;
-  border-color: lightgreen;
-  color: white;
+  background-color: rgb(98, 184, 237);
+  border-color: rgb(92, 152, 189);
+  color: black;
 }
 
 .cell.last-found {
-  background-color: lightcoral;
-  border-color: lightcoral;
-  color: white;
+  background-color: yellow;
+  border-color: rgb(228, 226, 79);
+  color: black;
 }
 
 .words-found-display {
