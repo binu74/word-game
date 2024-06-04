@@ -19,7 +19,7 @@ const GameBoard = () => {
   const [formedWord, setFormedWord] = useState('');
   const [targetWords] = useState(['OKAYYY', 'YESSS', 'SUNFLOWER', 'LETTERLOOP', 'WORDLE', 'CUTERWITHYOU']);
   const [foundWords, setFoundWords] = useState([]);
-  const [foundWordCells, setFoundWordCells] = useState([]);
+  const [foundWordCells, setFoundWordCells] = useState({});
 
   useEffect(() => {
     setBoard(newBoard);
@@ -54,8 +54,14 @@ const GameBoard = () => {
     if (targetWords.includes(formedWord)) {
       const newFoundWords = [...foundWords, formedWord];
       setFoundWords(newFoundWords);
-      setFoundWordCells([...foundWordCells, ...selectedCells]);
-      
+      const newFoundWordCells = { ...foundWordCells };
+
+      selectedCells.forEach(cell => {
+        newFoundWordCells[`${cell.row}-${cell.col}`] = formedWord;
+      });
+
+      setFoundWordCells(newFoundWordCells);
+
       // Clear selected cells and formed word if matched
       setSelectedCells([]);
       setFormedWord('');
@@ -75,15 +81,10 @@ const GameBoard = () => {
 
   const getCellClass = (row, col) => {
     const isSelected = selectedCells.some(cell => cell.row === row && cell.col === col);
-    const isFound = foundWordCells.some(cell => cell.row === row && cell.col === col);
+    const cellKey = `${row}-${col}`;
+    const foundWord = foundWordCells[cellKey];
 
-    if (isFound) {
-      const foundWord = foundWords.find(word =>
-        word.split('').every((letter, index) => {
-          const cell = selectedCells[index];
-          return cell && board[cell.row][cell.col] === letter;
-        })
-      );
+    if (foundWord) {
       if (foundWord === targetWords[targetWords.length - 1]) {
         return 'cell last-found';
       }
@@ -105,7 +106,7 @@ const GameBoard = () => {
         <h1>STRANDS FOR YOU</h1>
         <div className="theme-section">
           <div className="theme-title">Today's Theme</div>
-          <div className="theme-description">I SEEE</div>
+          <div className="theme-description"><b>I SEEE</b></div>
         </div>
         <textarea value={formedWord} readOnly className="word-display" />
         <div className="game-grid">
@@ -117,8 +118,8 @@ const GameBoard = () => {
                   letter={letter}
                   row={rowIndex}
                   col={colIndex}
-                  cellClass={allWordsFound ? 
-                    (targetWords[targetWords.length - 1].includes(board[rowIndex][colIndex]) ? 'cell last-found' : 'cell found') : 
+                  cellClass={allWordsFound && foundWords.length === targetWords.length ? 
+                    (foundWordCells[`${rowIndex}-${colIndex}`] === targetWords[targetWords.length - 1] ? 'cell last-found' : 'cell found') : 
                     getCellClass(rowIndex, colIndex)
                   }
                   onClick={handleCellClick}
