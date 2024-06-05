@@ -109,27 +109,37 @@ const GameBoard = () => {
           <div className="theme-description"><b>I SEEE</b></div>
         </div>
         <textarea value={formedWord} readOnly className="word-display" />
-        <div className="game-grid">
-          {board.map((row, rowIndex) => (
-            <div key={rowIndex} className="row">
-              {row.map((letter, colIndex) => (
-                <Cell
-                  key={colIndex}
-                  letter={letter}
-                  row={rowIndex}
-                  col={colIndex}
-                  cellClass={allWordsFound && foundWords.length === targetWords.length ? 
-                    (foundWordCells[`${rowIndex}-${colIndex}`] === targetWords[targetWords.length - 1] ? 'cell last-found' : 'cell found') : 
-                    getCellClass(rowIndex, colIndex)
-                  }
-                  onClick={handleCellClick}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
         <div className="words-found-display">
           {`${foundWords.length} of ${targetWords.length} theme words found`}
+        </div>
+        <div className="grid-and-words-container">
+          <div className="game-grid">
+            {board.map((row, rowIndex) => (
+              <div key={rowIndex} className="row">
+                {row.map((letter, colIndex) => (
+                  <Cell
+                    key={colIndex}
+                    letter={letter}
+                    row={rowIndex}
+                    col={colIndex}
+                    cellClass={allWordsFound && foundWords.length === targetWords.length ? 
+                      (foundWordCells[`${rowIndex}-${colIndex}`] === targetWords[targetWords.length - 1] ? 'cell last-found' : 'cell found') : 
+                      getCellClass(rowIndex, colIndex)
+                    }
+                    onClick={handleCellClick}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="words-found-container">
+            <div className="words-found-title">Words Found:</div>
+            <ul className="words-found-list">
+              {foundWords.map((word, index) => (
+                <li key={index}>{word}</li>
+              ))}
+            </ul>
+          </div>
         </div>
         <button onClick={handleSubmit}>Submit</button>
       </div>

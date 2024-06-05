@@ -45,6 +45,14 @@
   overflow: hidden;
 }
 
+.grid-and-words-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1100px;
+  margin: 20px;
+}
+
 .game-grid {
   display: grid;
   grid-template-rows: repeat(8, 1fr);
@@ -87,6 +95,29 @@
   background-color: yellow;
   border-color: rgb(228, 226, 79);
   color: black;
+}
+
+.words-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 20px;
+}
+
+.words-found-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.words-found-list {
+  font-size: 16px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.words-found-list li {
+  margin-bottom: 5px;
 }
 
 .words-found-display {
