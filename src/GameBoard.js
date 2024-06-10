@@ -21,6 +21,15 @@ const GameBoard = () => {
   const [foundWords, setFoundWords] = useState([]);
   const [foundWordCells, setFoundWordCells] = useState({});
 
+  const wordDescriptions = {
+    OKAYYY: "We said ok/okay/okayy/okayyy 14 times a day, with 'okayyy' being the most popular!",
+    YESSS: "We said yes/yess/yesss/yessss almost 4 times a day!",
+    SUNFLOWER: "Sunday ho ya Monday, we started our day with 🌻",
+    WORDLE: "The math is settled... TTACE—oops, TRACE is the way to go!",
+    LETTERLOOP: "Two words, one loop, and two shared letters: U & I",
+    CUTERWITHYOU: "Self-explanatory 😋 #cuterwithyou"
+  };
+
   useEffect(() => {
     setBoard(newBoard);
   }, []);
@@ -69,7 +78,7 @@ const GameBoard = () => {
       // Check if all target words have been found
       if (newFoundWords.length === targetWords.length) {
         setTimeout(() => {
-          alert('Congratulations! You have found all the words!');
+          alert('Congratulations and Celebrations!! 🥳🎉');
         }, 100);
       }
     } else {
@@ -103,16 +112,16 @@ const GameBoard = () => {
   return (
     <div className="game-board-container">
       <div className="game-board">
-        <h1>STRANDS FOR YOU</h1>
+        <h1>Strands Special Edition: Jun 17, 2024</h1>
         <div className="theme-section">
-          <div className="theme-title">Today's Theme</div>
-          <div className="theme-description"><b>I SEEE</b></div>
+          <div className="theme-title">TODAY'S THEME</div>
+          <div className="theme-description"><b>Way to grow!</b></div>
         </div>
         <textarea value={formedWord} readOnly className="word-display" />
         <div className="words-found-display">
           {`${foundWords.length} of ${targetWords.length} theme words found`}
         </div>
-        <div className="grid-and-words-container">
+        <div className="main-content">
           <div className="game-grid">
             {board.map((row, rowIndex) => (
               <div key={rowIndex} className="row">
@@ -133,12 +142,17 @@ const GameBoard = () => {
             ))}
           </div>
           <div className="words-found-container">
-            <div className="words-found-title">Words Found:</div>
-            <ul className="words-found-list">
+            <h2 className="words-found-title">Found Words</h2>
+            <ol>
               {foundWords.map((word, index) => (
-                <li key={index}>{word}</li>
+                <li key={index}>
+                  <b>{word}</b>
+                  <ul>
+                    <li>{wordDescriptions[word]}</li>
+                  </ul>
+                </li>
               ))}
-            </ul>
+            </ol>
           </div>
         </div>
         <button onClick={handleSubmit}>Submit</button>

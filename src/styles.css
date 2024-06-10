@@ -16,25 +16,30 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+  width: min(222px + 15vw, 474px);
+  border: 1px solid #bcbcbc;
+  border-radius: 8px;
 }
 
 .theme-title {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: normal;
   margin-bottom: 10px;
+  width: min(222px + 15vw, 474px);
+  background: #aedfee;
+  text-align: center;
+  font-weight: 600;
 }
 
 .theme-description {
   font-size: 20px;
   font-weight: bold;
   color: #555;
-  border: 2px solid #555;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
 .word-display {
-  width: 500px;
   height: 80px;
   font-size: 24px;
   text-align: center;
@@ -43,14 +48,16 @@
   background-color: #f0f0f0;
   resize: none; /* Disable resizing */
   overflow: hidden;
+  width: min(222px + 15vw, 474px);
 }
 
-.grid-and-words-container {
+.words-found-display {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.main-content {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1100px;
-  margin: 20px;
 }
 
 .game-grid {
@@ -98,31 +105,18 @@
 }
 
 .words-found-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin: 20px;
+  margin-left: 20px;
+  font-size: 18px;
 }
 
 .words-found-title {
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.words-found-list {
-  font-size: 16px;
-  list-style-type: none;
-  padding: 0;
-}
-
-.words-found-list li {
-  margin-bottom: 5px;
-}
-
-.words-found-display {
-  margin: 20px 0;
-  font-size: 18px;
+.words-found-container li {
+  padding-top: 10px;
 }
 
 button {
