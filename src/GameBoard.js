@@ -103,10 +103,10 @@ const GameBoard = () => {
   return (
     <div className="game-board-container">
       <div className="game-board">
-        <h1>STRANDS FOR YOU</h1>
+        <h1>Strands Special Edition:Jun 17,2024</h1>
         <div className="theme-section">
           <div className="theme-title">Today's Theme</div>
-          <div className="theme-description"><b>I SEEE</b></div>
+          <div className="theme-description"><b>Way to grow!</b></div>
         </div>
         <textarea value={formedWord} readOnly className="word-display" />
         <div className="words-found-display">
