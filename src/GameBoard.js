@@ -134,7 +134,7 @@ const GameBoard = () => {
         <h1>Strands Special Edition: Jun 17, 2024</h1>
         <div className="theme-section">
           <div className="theme-title">TODAY'S THEME</div>
-          <div className="theme-description"><b>Way to grow!</b></div>
+          <div className="theme-description"><b>I SEEE</b></div>
         </div>
         <textarea value={formedWord} readOnly className="word-display" />
         <div className="words-found-display">
