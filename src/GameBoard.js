@@ -2,16 +2,31 @@ import React, { useState, useEffect } from 'react';
 import Cell from './Cell';
 import './styles.css';
 
+const Modal = ({ show, onClose }) => {
+  if (!show) {
+    return null;
+  }
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <p>Congratulations and Celebrations!! 🥳🎉</p>
+        <button onClick={onClose}>OK</button>
+      </div>
+    </div>
+  );
+};
+
 const GameBoard = () => {
   const newBoard = [
-    ['Y', 'K', 'O', 'S', 'S', 'S'],
-    ['Y', 'A', 'W', 'T', 'H', 'E'],
-    ['Y', 'O', 'I', 'S', 'Y', 'Y'],
-    ['R', 'D', 'W', 'L', 'U', 'O'],
-    ['C', 'L', 'R', 'E', 'N', 'U'],
-    ['U', 'E', 'E', 'T', 'L', 'F'],
-    ['O', 'T', 'E', 'T', 'O', 'R'],
-    ['P', 'O', 'L', 'R', 'W', 'E']
+    ['E', 'O', 'W', 'Y', 'E', 'S'],
+    ['L', 'R', 'Y', 'T', 'H', 'S'],
+    ['D', 'Y', 'I', 'S', 'Y', 'S'],
+    ['Y', 'A', 'W', 'U', 'L', 'O'],
+    ['C', 'K', 'R', 'N', 'E', 'U'],
+    ['U', 'O', 'E', 'F', 'T', 'T'],
+    ['R', 'T', 'L', 'O', 'P', 'E'],
+    ['E', 'W', 'O', 'O', 'L', 'R']
   ];
 
   const [board, setBoard] = useState([]);
@@ -20,6 +35,7 @@ const GameBoard = () => {
   const [targetWords] = useState(['OKAYYY', 'YESSS', 'SUNFLOWER', 'LETTERLOOP', 'WORDLE', 'CUTERWITHYOU']);
   const [foundWords, setFoundWords] = useState([]);
   const [foundWordCells, setFoundWordCells] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   const wordDescriptions = {
     OKAYYY: "We said ok/okay/okayy/okayyy 14 times a day, with 'okayyy' being the most popular!",
@@ -77,10 +93,13 @@ const GameBoard = () => {
 
       // Check if all target words have been found
       if (newFoundWords.length === targetWords.length) {
-        setTimeout(() => {
-          alert('Congratulations and Celebrations!! 🥳🎉');
-        }, 100);
+        setShowModal(true);
       }
+      // if (newFoundWords.length === targetWords.length) {
+      //   setTimeout(() => {
+      //     alert('Congratulations and Celebrations!! 🥳🎉');
+      //   }, 100);
+      // }
     } else {
       // Clear selected cells and formed word if not matched
       setSelectedCells([]);
@@ -157,6 +176,7 @@ const GameBoard = () => {
         </div>
         <button onClick={handleSubmit}>Submit</button>
       </div>
+      <Modal show={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 };
