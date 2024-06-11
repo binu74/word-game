@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Strands Special Edition: Jun 17, 2024
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+- [Introduction]
+- [Features]
+- [Installation]
+- [Usage]
+- [Game Rules]
+- [Project Structure]
+- [Technologies Used]
+- [Contributing]
 
-## Available Scripts
 
-In the project directory, you can run:
+## Introduction
+Welcome to the Strands Special Edition: Jun 17, 2024 ! This is a simple and engaging word puzzle game where players are given a hint and must find the corresponding word in a grid of shuffled letters. The game helps to improve vocabulary and pattern recognition skills.
 
-### `npm start`
+## Features
+- A clear and intuitive user interface.
+- Display a hint to help players guess the word.
+- A grid of shuffled letters where the answer is hidden.
+- Click on the letters in the correct order to form the word based on the hint.
+- A submit button to check if the selected letters form the correct word.
+- Feedback messages to indicate if the answer is correct or not.
+- Option to play again with a new word and hint.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
+To run this project locally, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Clone the repository:**
+    open the repository
+    copy the http address
+    open terminal in your system
+    git clone https://github.com/binu74/word-game.git
+    cd word-game
 
-### `npm test`
+2. **Install dependencies:**
+    npm install
+    install yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Start the development server:**
+    yarn start
 
-### `npm run build`
+The app should now be running on [http://localhost:3000]
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
+- Open the game in your browser.
+- Read the hint displayed at the top of the page.
+- Find the letters in the grid that form the answer to the hint.
+- Click on the letters in the correct order.
+- Click the "Submit" button to check your answer.
+- If correct, you will see a Congratulations and Celebrations!!.
+- Click "OK" to start a new game.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Game Rules
+- The letters of the answer will be adjacent to each other either horizontally, vertically, or diagonally.
+- The answer can be forwards or backwards.
+- Clicking on letters will highlight them and arrows will indicate the sequence.
+- Submit your answer to see if you are correct.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
+- React: A JavaScript library for building user interfaces.
+- HTML5 & CSS3: For structuring and styling the application.
+- JavaScript: For application logic.
+- NPM: For managing project dependencies.
+- Yarn: For managing and launching project dependencies.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contribution
+abhijiths148@gmail.com
