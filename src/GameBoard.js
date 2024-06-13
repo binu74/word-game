@@ -95,11 +95,6 @@ const GameBoard = () => {
       if (newFoundWords.length === targetWords.length) {
         setShowModal(true);
       }
-      // if (newFoundWords.length === targetWords.length) {
-      //   setTimeout(() => {
-      //     alert('Congratulations and Celebrations!! 🥳🎉');
-      //   }, 100);
-      // }
     } else {
       // Clear selected cells and formed word if not matched
       setSelectedCells([]);
